@@ -1,0 +1,4 @@
+{
+  "sql_driver": "mysql",
+  "sql_dsn": "user:pass@tcp(127.0.0.1:3306)/punks?readTimeout=30s\u0026writeTimeout=30s"
+}
