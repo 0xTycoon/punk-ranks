@@ -553,9 +553,9 @@ The punks can be arranged in to categories.
 ```
 Type -> Non-Human (121) --> Alien (9)
 |     |                |--> Ape (24)
-|     |                |--> Ape (88)
+|     |                |--> Zombie (88)
 |     |            
-|     --> Human --> Sex --> Male (6039) --> Skin (598)
+|     --> Human --> Sex --> Male (6039) --> Skin
 |                    |               |--> Albino (598)
 |                    |               |--> Light (1861)
 |                    |               |--> Mid (1857)
