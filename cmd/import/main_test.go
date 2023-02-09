@@ -237,7 +237,6 @@ func TestPopulate(t *testing.T) {
 
 	csvReader := csv.NewReader(bytes.NewReader([]byte(params)))
 	records, _ := csvReader.ReadAll()
-	punksranking.ImportLayers(records)
 
 	if stmt, err := db.Prepare(
 		`UPDATE attributes SET layer_id = ? WHERE name =? ;`,
