@@ -11,7 +11,7 @@ func main() {
 
 	defer punksranking.Close()
 
-	if err := punksranking.SetupDB("./config.json"); err != nil {
+	if _, err := punksranking.SetupDB("./config.json"); err != nil {
 		log.Print(err)
 		return
 	}

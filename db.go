@@ -11,10 +11,10 @@ type Store struct {
 
 var db *sql.DB
 
-func SetupDB(configPath string) error {
+func SetupDB(configPath string) (*sql.DB, error) {
 	conf, err := LoadConfig(configPath)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	s := &Store{
 		Driver: conf.SQLDriver,
@@ -23,12 +23,12 @@ func SetupDB(configPath string) error {
 
 	db, err = s.connect()
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	err = s.prepareSQL()
 
-	return err
+	return db, err
 }
 
 func (s *Store) connect() (*sql.DB, error) {
@@ -275,6 +275,14 @@ SELECT id as punk_id, (select a.id from attributes a where a.name = concat (p.sl
 			statements["insert_punk_cat_temp_del"] = stmt
 		}
 	*/
+
+	if stmt, err := db.Prepare(
+		`UPDATE attributes SET layer_id = ? WHERE id =? ;`,
+	); err != nil {
+		return err
+	} else {
+		statements["update_attributes_layer"] = stmt
+	}
 
 	return nil
 }

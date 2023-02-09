@@ -581,6 +581,26 @@ As you may notice, Female Albinos are the rarest out of the humans!
 The "number of attributes" has some interesting results too. There are some exceptionally rare pieces there,
 therefore these should probably be on their own level.
 
+Punks can also be grouped by their layers. Here are all the layers
+
+```
+
+        0 Base,
+        1 Cheeks,
+        2 Blemish,
+        3 Hair,
+        4 Beard,
+        5 Eyes,
+        6 Eyewear,
+        7 Nose,
+        8 Mouth,
+        9 MouthProp,
+        10 Earring,
+        11 Headgear
+        12 Neck
+	    
+```
+These are not used in the calculation of the rankings, but are included for completeness.
 
 Methodology
 ----

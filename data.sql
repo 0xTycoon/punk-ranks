@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
 -- Host: 127.0.0.1    Database: punks
 -- ------------------------------------------------------
--- Server version	8.0.23-0ubuntu0.20.04.1
+-- Server version	8.0.32-0ubuntu0.20.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,8 +26,11 @@ CREATE TABLE `attributes` (
   `id` int unsigned NOT NULL,
   `name` varchar(128) DEFAULT NULL,
   `total` int DEFAULT NULL,
+  `layer_id` int unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `attributes_id_uindex` (`id`)
+  UNIQUE KEY `attributes_id_uindex` (`id`),
+  KEY `attributes_layers_id_fk` (`layer_id`),
+  CONSTRAINT `attributes_layers_id_fk` FOREIGN KEY (`layer_id`) REFERENCES `layers` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -37,8 +40,32 @@ CREATE TABLE `attributes` (
 
 LOCK TABLES `attributes` WRITE;
 /*!40000 ALTER TABLE `attributes` DISABLE KEYS */;
-INSERT INTO `attributes` VALUES (1,'Cigarette',961),(2,'Medical Mask',175),(3,'Nerd Glasses',572),(4,'Orange Side',68),(5,'Dark Hair',157),(6,'Red Mohawk',147),(7,'Muttonchops',303),(8,'CATHMMidxx',1857),(9,'Buck Teeth',78),(10,'Small Shades',378),(11,'Cap',351),(12,'Eye Patch',461),(13,'Regular Shades',527),(14,'Silver Chain',156),(15,'Mohawk Dark',429),(16,'Pilot Helmet',54),(17,'Blonde Short',129),(18,'Straight Hair Blonde',144),(19,'Wild Blonde',144),(20,'CATHFAlbxx',420),(21,'CATHFMidxx',1174),(22,'Top Hat',115),(23,'Rosy Cheeks',128),(24,'Normal Beard',292),(25,'Smile',238),(26,'Messy Hair',460),(27,'Hoodie',259),(28,'Stringy Hair',463),(29,'Wild White Hair',136),(30,'Half Shaved',147),(31,'CATHMAlbxx',598),(32,'Big Beard',146),(33,'Knitted Cap',419),(34,'Purple Hair',165),(35,'CATxxxxxZO',88),(36,'Frumpy Hair',442),(37,'CATHMlitxx',1861),(38,'Mole',644),(39,'Earring',2459),(40,'VR',332),(41,'Eye Mask',293),(42,'Welding Goggles',86),(43,'Pigtails',94),(44,'Pink With Hat',95),(45,'CATxxxxxAL',9),(46,'Gold Chain',169),(47,'Choker',48),(48,'Normal Beard Black',289),(49,'Shaved Head',300),(50,'Purple Lipstick',655),(51,'Big Shades',535),(52,'Vampire Hair',147),(53,'Peak Spike',303),(54,'Blue Eye Shadow',266),(55,'Pipe',317),(56,'CATxxxxxAP',24),(57,'Fedora',186),(58,'Spots',124),(59,'Chinstrap',282),(60,'Mustache',288),(61,'Blonde Bob',147),(62,'Horned Rim Glasses',535),(63,'Straight Hair Dark',148),(64,'CATHFlitxx',1145),(65,'Luxurious Beard',286),(66,'Front Beard',273),(67,'Clown Nose',212),(68,'Do-rag',300),(69,'Wild Hair',447),(70,'Police Cap',203),(71,'Mohawk',441),(72,'Mohawk Thin',441),(73,'Tiara',55),(74,'CATHFDrkxx',1101),(75,'Frown',261),(76,'Goat',295),(77,'Vape',272),(78,'Clown Eyes Blue',384),(79,'Handlebars',263),(80,'Clown Eyes Green',382),(81,'Classic Shades',501),(82,'Cowboy Hat',142),(83,'Bandana',481),(84,'Front Beard Dark',260),(85,'Straight Hair',151),(86,'Shadow Beard',526),(87,'Beanie',44),(88,'Green Eye Shadow',271),(89,'CATHMDrkxx',1723),(90,'Crazy hair',414),(91,'Tassle Hat',178),(92,'Headband',406),(93,'Black Lipstick',617),(94,'3D Glasses',286),(95,'Clown Hair Green',148),(96,'Hot Lipstick',696),(97,'Cap Forward',254),(98,'Purple Eye Shadow',262),(99,'0Att',8),(100,'1Att',333),(101,'2Att',3560),(102,'3Att',4501),(103,'4Att',1420),(104,'5Att',166),(105,'6Att',11),(106,'7Att',1);
+INSERT INTO `attributes` VALUES (1,'Cigarette',961,9),(2,'Medical Mask',175,9),(3,'Nerd Glasses',572,6),(4,'Orange Side',68,3),(5,'Dark Hair',157,3),(6,'Red Mohawk',147,3),(7,'Muttonchops',303,4),(8,'CATHMMidxx',1857,NULL),(9,'Buck Teeth',78,8),(10,'Small Shades',378,6),(11,'Cap',351,11),(12,'Eye Patch',461,6),(13,'Regular Shades',527,6),(14,'Silver Chain',156,12),(15,'Mohawk Dark',429,3),(16,'Pilot Helmet',54,11),(17,'Blonde Short',129,3),(18,'Straight Hair Blonde',144,3),(19,'Wild Blonde',144,3),(20,'CATHFAlbxx',420,NULL),(21,'CATHFMidxx',1174,NULL),(22,'Top Hat',115,11),(23,'Rosy Cheeks',128,1),(24,'Normal Beard',292,4),(25,'Smile',238,8),(26,'Messy Hair',460,3),(27,'Hoodie',259,11),(28,'Stringy Hair',463,3),(29,'Wild White Hair',136,3),(30,'Half Shaved',147,3),(31,'CATHMAlbxx',598,NULL),(32,'Big Beard',146,4),(33,'Knitted Cap',419,11),(34,'Purple Hair',165,3),(35,'CATxxxxxZO',88,NULL),(36,'Frumpy Hair',442,3),(37,'CATHMlitxx',1861,NULL),(38,'Mole',644,2),(39,'Earring',2459,10),(40,'VR',332,6),(41,'Eye Mask',293,6),(42,'Welding Goggles',86,6),(43,'Pigtails',94,3),(44,'Pink With Hat',95,3),(45,'CATxxxxxAL',9,NULL),(46,'Gold Chain',169,12),(47,'Choker',48,12),(48,'Normal Beard Black',289,4),(49,'Shaved Head',300,3),(50,'Purple Lipstick',655,8),(51,'Big Shades',535,6),(52,'Vampire Hair',147,3),(53,'Peak Spike',303,3),(54,'Blue Eye Shadow',266,5),(55,'Pipe',317,9),(56,'CATxxxxxAP',24,NULL),(57,'Fedora',186,11),(58,'Spots',124,2),(59,'Chinstrap',282,4),(60,'Mustache',288,4),(61,'Blonde Bob',147,3),(62,'Horned Rim Glasses',535,6),(63,'Straight Hair Dark',148,3),(64,'CATHFlitxx',1145,NULL),(65,'Luxurious Beard',286,4),(66,'Front Beard',273,4),(67,'Clown Nose',212,7),(68,'Do-rag',300,11),(69,'Wild Hair',447,3),(70,'Police Cap',203,11),(71,'Mohawk',441,3),(72,'Mohawk Thin',441,3),(73,'Tiara',55,11),(74,'CATHFDrkxx',1101,NULL),(75,'Frown',261,8),(76,'Goat',295,4),(77,'Vape',272,9),(78,'Clown Eyes Blue',384,5),(79,'Handlebars',263,4),(80,'Clown Eyes Green',382,5),(81,'Classic Shades',501,6),(82,'Cowboy Hat',142,11),(83,'Bandana',481,11),(84,'Front Beard Dark',260,4),(85,'Straight Hair',151,3),(86,'Shadow Beard',526,4),(87,'Beanie',44,11),(88,'Green Eye Shadow',271,5),(89,'CATHMDrkxx',1723,NULL),(90,'Crazy hair',414,3),(91,'Tassle Hat',178,11),(92,'Headband',406,11),(93,'Black Lipstick',617,8),(94,'3D Glasses',286,6),(95,'Clown Hair Green',148,3),(96,'Hot Lipstick',696,8),(97,'Cap Forward',254,11),(98,'Purple Eye Shadow',262,5),(99,'0Att',8,NULL),(100,'1Att',333,NULL),(101,'2Att',3560,NULL),(102,'3Att',4501,NULL),(103,'4Att',1420,NULL),(104,'5Att',166,NULL),(105,'6Att',11,NULL),(106,'7Att',1,NULL);
 /*!40000 ALTER TABLE `attributes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `layers`
+--
+
+DROP TABLE IF EXISTS `layers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `layers` (
+  `id` int unsigned NOT NULL,
+  `name` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `layers`
+--
+
+LOCK TABLES `layers` WRITE;
+/*!40000 ALTER TABLE `layers` DISABLE KEYS */;
+INSERT INTO `layers` VALUES (0,'Base'),(1,'Cheeks'),(2,'Blemish'),(3,'Hair'),(4,'Beard'),(5,'Eyes'),(6,'Eyewear'),(7,'Nose'),(8,'Mouth'),(9,'MouthProp'),(10,'Earring'),(11,'Headgear'),(12,'Neck');
+/*!40000 ALTER TABLE `layers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -135,4 +162,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-26 21:34:59
+-- Dump completed on 2023-02-09 14:54:43
