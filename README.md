@@ -601,10 +601,6 @@ Punk attributes can also be grouped by their layers. Here are all the layers
 	    
 ```
 These are not used in the calculation of the rankings, but are included for completeness.
-Layers are concerned with how punks are rendered. The algorithm begins with the base layer,
-which determines the shade and sex. Then moves choose the Cheeks, Blemish and so on, and
-an attribute is chosen depending on a roll of the die. Some layers may be excluded from a base,
-eg. Aliens do not have hair.
 
 Methodology
 ----
